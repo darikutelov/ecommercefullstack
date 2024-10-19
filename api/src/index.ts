@@ -1,8 +1,9 @@
-import express from "express"
+import express, { json } from "express"
 import productRouter from "./routes/products"
 
 const port = 8000
 const app = express()
+app.use(json())
 
 app.use("/products", productRouter)
 
