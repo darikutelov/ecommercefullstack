@@ -8,7 +8,7 @@ export function validateData(schema: z.ZodObject<any, any>) {
       schema.parse(req.body)
 
       //picks from req body only fields with keys from schema
-      req.body = _.pick(req.body, Object.keys(schema.shape))
+      req.validatedBody = _.pick(req.body, Object.keys(schema.shape))
       next()
     } catch (error) {
       if (error instanceof ZodError) {
