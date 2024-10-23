@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm"
 import { Request, Response } from "express"
-import { db } from "~/db"
-import { productsTable } from "~/db/productSchema"
+import { db } from "../../db/index.js"
+import { productsTable } from "../../db/productSchema.js"
 
 async function listProducts(req: Request, res: Response) {
   try {

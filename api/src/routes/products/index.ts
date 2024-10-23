@@ -5,10 +5,13 @@ import {
   getProductById,
   listProducts,
   updateProduct
-} from "~/controllers/products"
-import { validateData } from "~/middlewares/validationMiddleware"
-import { createProductSchema, updateProductSchema } from "~/db/productSchema"
-import { verifySeller, verifyToken } from "~/middlewares/authMiddleware"
+} from "../../controllers/products/index.js"
+import { validateData } from "../../middlewares/validationMiddleware.js"
+import {
+  createProductSchema,
+  updateProductSchema
+} from "../../db/productSchema.js"
+import { verifySeller, verifyToken } from "../../middlewares/authMiddleware.js"
 
 const router = Router()
 
