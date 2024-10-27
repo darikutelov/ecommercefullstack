@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm"
 import { Request, Response } from "express"
-import { db } from "~/db"
-import { productsTable } from "~/db/productSchema"
+import { db } from "../../db/index.js"
+import { productsTable } from "../../db/productSchema.js"
 
 async function listProducts(req: Request, res: Response) {
   try {
@@ -35,7 +35,7 @@ async function createProduct(req: Request, res: Response) {
   try {
     const [product] = await db
       .insert(productsTable)
-      .values(req.body)
+      .values(req.validatedBody)
       .returning()
     res.status(201).json(product)
   } catch (error) {
@@ -45,7 +45,7 @@ async function createProduct(req: Request, res: Response) {
 
 async function updateProduct(req: Request, res: Response) {
   const { id } = req.params
-  const updatedFields = req.body
+  const updatedFields = req.validatedBody
 
   try {
     const [updatedProduct] = await db
